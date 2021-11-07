@@ -1,0 +1,13 @@
+<mvc:View controllerName="com.sharan.project.store.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>store.title}" titleAlignment="Center">
+        <content>
+            <GenericTile class="sapUiTinyMargin" state="{mStore>/Tile/Orders/State}"  header="{i18n>store.tile.title.orders}" press="onTilePress('nOrders')">
+                <TileContent footer="Navigate to App">
+                    <NumericContent value="{mStore>/Tile/Orders/Count}" icon="sap-icon://sap-box" withMargin="false" />
+                </TileContent>
+            </GenericTile>
+        </content>
+    </Page>
+</mvc:View>

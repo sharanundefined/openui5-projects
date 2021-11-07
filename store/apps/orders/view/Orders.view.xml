@@ -1,0 +1,61 @@
+<mvc:View controllerName="com.sharan.apps.orders.controller.Orders"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>orders.title}" titleAlignment="Center">
+        <content>
+            <Table id="idOrdersTable" inset="false" sticky="ColumnHeaders" growing="true" mode="SingleSelectMaster" items="{path: 'mNorthwind>/Orders'}">
+                <columns>
+                    <Column width="20em">
+                        <Text text="Order ID" />
+                    </Column>
+                    <Column>
+                        <Text text="Order Date" />
+                    </Column>
+                    <Column>
+                        <Text text="Customer ID" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Required Date" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" hAlign="Right" demandPopin="true">
+                        <Text text="Shipped On" />
+                    </Column>
+                    <Column  hAlign="End">
+                        <Text text="Shipped To" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{mNorthwind>OrderID}" />
+                            <Text text="{
+                                path: 'mNorthwind>OrderDate',
+                                type: 'sap.ui.model.type.Date',
+                                formatOptions: {
+                                    style: 'medium'
+                                }
+                            }" />
+                            <Text text="{mNorthwind>CustomerID}" />
+                            <Text text="{
+                                path: 'mNorthwind>RequiredDate',
+                                type: 'sap.ui.model.type.Date',
+                                formatOptions: {
+                                    style: 'medium'
+                                }
+                            }" />
+                            <Text text="{
+                                path: 'mNorthwind>ShippedDate',
+                                type: 'sap.ui.model.type.Date',
+                                formatOptions: {
+                                    style: 'full'
+                                }
+                            }" />
+                            <Text text="{mNorthwind>ShipCity}, {mNorthwind>ShipCountry}, {mNorthwind>ShipPostalCode}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+        </content>
+    </Page>
+</mvc:View>

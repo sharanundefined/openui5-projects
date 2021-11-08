@@ -5,7 +5,7 @@ sap.ui.define([
 ], function (UIComponent, Device, models) {
 	"use strict";
 
-	jQuery.sap.registerModulePath("com.sharan.apps", "./apps");
+	jQuery.sap.registerModulePath("com.sharan.apps", "../apps");
 
 	return UIComponent.extend("com.sharan.project.store.Component", {
 

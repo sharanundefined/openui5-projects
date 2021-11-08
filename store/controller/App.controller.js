@@ -5,7 +5,6 @@ sap.ui.define([
 
 	return BaseController.extend("com.sharan.project.store.controller.App", {
 		onInit: function () {
-
 		}
 	});
 });

@@ -118,6 +118,12 @@
 						"name": "tOrders",
 						"prefix": "app"
 					}
+        },{
+          "name": "nProducts",
+          "pattern": "products",
+          "target": [
+            "tProducts"
+          ]
         }
       ],
       "targets": {
@@ -136,6 +142,10 @@
           "type": "Component",
           "usage": "orders",
           "title": "Orders"
+        },
+        "tProducts": {
+          "viewType": "XML",
+          "viewName": "Products"
         }
       }
     }

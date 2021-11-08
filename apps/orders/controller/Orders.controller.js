@@ -9,6 +9,9 @@ sap.ui.define([
 	
 		},
 		onAfterRendering: function () {
+			if (this.extHookOnAfterRendering) { 
+				this.extHookOnAfterRendering(); 
+			}
 		}
 	});
 });

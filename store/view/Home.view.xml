@@ -3,9 +3,14 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>store.title}" titleAlignment="Center">
         <content>
-            <GenericTile class="sapUiTinyMargin" state="{mStore>/Tile/Orders/State}"  header="{i18n>store.tile.title.orders}" press="onTilePress('nOrders')">
-                <TileContent footer="Navigate to App">
-                    <NumericContent value="{mStore>/Tile/Orders/Count}" icon="sap-icon://sap-box" withMargin="false" />
+            <GenericTile class="sapUiTinyMargin" state="{mStore>/Tile/Orders/state}"  header="{i18n>store.tile.title.orders}" press="onTilePress('nOrders')">
+                <TileContent footer="{i18n>store.standard.app}">
+                    <NumericContent value="{mStore>/Tile/Orders/count}" icon="sap-icon://sales-order" withMargin="false" />
+                </TileContent>
+            </GenericTile>
+            <GenericTile class="sapUiTinyMargin" state="{mStore>/Tile/Products/state}" header="{i18n>store.tile.title.products}" press="onTilePress('nProducts')">
+                <TileContent footer="{i18n>store.standard.app}">
+                    <NumericContent value="{mStore>/Tile/Products/count}" icon="sap-icon://product" withMargin="false" />
                 </TileContent>
             </GenericTile>
         </content>

@@ -1,0 +1,78 @@
+<mvc:View controllerName="com.sharan.project.store.controller.Products"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.f"
+    xmlns:uxap="sap.uxap"
+    xmlns:forms="sap.ui.layout.form"
+    xmlns="sap.m">
+    <Page title="{i18n>store.products.title}" showNavButton="true"  navButtonPress="onNavBack" titleAlignment="Center">
+        <content>
+            <f:FlexibleColumnLayout id="idProductsFlexibleColumnLayout" layout="{mProducts>/FlexibleColumnLayout/layout}" restoreFocusOnBackNavigation="true">
+                <f:beginColumnPages>
+                    <ScrollContainer height="100%" width="100%" vertical="true" horizontal="false" focusable="true">
+                        <Table id="idProductsTable" inset="false" sticky="ColumnHeaders" growing="true" items="{path: 'mNorthwind>/Products'}" class="sapFDynamicPageAlignContent" width="auto">
+                            <columns>
+                                <Column width="12em">
+                                    <Text text="Product" />
+                                </Column>
+                                <Column hAlign="End">
+                                    <Text text="Price" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem type="Navigation" press="onProductClick">
+                                    <cells>
+                                        <ObjectIdentifier title="{mNorthwind>ProductName}" text="{mNorthwind>ProductID}" />
+                                        <ObjectNumber number="{
+										parts:[{path:'mNorthwind>UnitPrice'}],
+										type: 'sap.ui.model.type.Currency',
+										formatOptions: {showMeasure: false}
+									}" unit="USD" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </ScrollContainer>
+                </f:beginColumnPages>
+                <f:midColumnPages>
+                    <uxap:ObjectPageLayout id="idProductsObjectPage" upperCaseAnchorBar="false">
+                        <uxap:headerTitle>
+                            <uxap:ObjectPageHeader objectImageURI="sap-icon://product" objectTitle="{mProducts>/selected/detail/ProductName}" objectSubtitle="Product ID: {mProducts>/selected/detail/ProductID}">
+                                <uxap:actions>
+                                    <Button icon="sap-icon://decline" press="onCloseProductDetail"/>
+                                </uxap:actions>
+                            </uxap:ObjectPageHeader>
+                        </uxap:headerTitle>
+                        <uxap:sections>
+                            <uxap:ObjectPageSection titleUppercase="false">
+                                <uxap:subSections>
+                                    <uxap:ObjectPageSubSection title="{i18n>store.products.detail.section1.title}" titleUppercase="false">
+                                        <uxap:blocks>
+                                            <forms:SimpleForm editable="false" layout="ColumnLayout">
+                                                <Label text="{i18n>store.products.detail.form.supplierID}"/>
+                                                <Text text="{mProducts>/selected/detail/SupplierID}"/>
+                                                <Label text="{i18n>store.products.detail.form.categoryID}"/>
+                                                <Text text="{mProducts>/selected/detail/CategoryID}"/>
+                                                <Label text="{i18n>store.products.detail.form.quantityPerUnit}"/>
+                                                <Text text="{mProducts>/selected/detail/QuantityPerUnit}"/>
+                                                <Label text="{i18n>store.products.detail.form.unitPrice}"/>
+                                                <Text text="{mProducts>/selected/detail/UnitPrice}"/>
+                                                <Label text="{i18n>store.products.detail.form.unitsInStock}"/>
+                                                <Text text="{mProducts>/selected/detail/UnitsInStock}"/>
+                                                <Label text="{i18n>store.products.detail.form.unitsOnOrder}"/>
+                                                <Text text="{mProducts>/selected/detail/UnitsOnOrder}"/>
+                                                <Label text="{i18n>store.products.detail.form.reorderLevel}"/>
+                                                <Text text="{mProducts>/selected/detail/ReorderLevel}"/>
+                                                <Label text="{i18n>store.products.detail.form.discontinued}"/>
+                                                <Text text="{mProducts>/selected/detail/Discontinued}"/>
+                                            </forms:SimpleForm>
+                                        </uxap:blocks>
+                                    </uxap:ObjectPageSubSection>
+                                </uxap:subSections>
+                            </uxap:ObjectPageSection>
+                        </uxap:sections>
+                    </uxap:ObjectPageLayout>
+                </f:midColumnPages>
+            </f:FlexibleColumnLayout>
+        </content>
+    </Page>
+</mvc:View>

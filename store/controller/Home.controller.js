@@ -9,9 +9,12 @@ sap.ui.define([
 			var oData = {
 				Tile: {
 					Orders: {
-						Items: [],
-						Count: 0,
-						State: "Loading"
+						count: 0,
+						state: "Loading"
+					},
+					Products: {
+						count: 0,
+						state: "Loading"
 					}
 				}
 			};
@@ -24,12 +27,21 @@ sap.ui.define([
 			mNorthwind.read("/Orders", {
 				success: function (oResponse) {
 					mStore.setProperty("/Tile/Orders", {
-						Items: oResponse.results,
-						Count: oResponse.results.length,
-						State: "Loaded"
+						count: oResponse.results.length,
+						state: "Loaded"
 					});
 				}, error: function (oError) {
-					mStore.setProperty("/Tile/Orders/State", "Failed");
+					mStore.setProperty("/Tile/Orders/state", "Failed");
+				}
+			});
+			mNorthwind.read("/Current_Product_Lists", {
+				success: function (oResponse) {
+					mStore.setProperty("/Tile/Products", {
+						count: oResponse.results.length,
+						state: "Loaded"
+					});
+				}, error: function (oError) {
+					mStore.setProperty("/Tile/Products/state", "Failed");
 				}
 			});
 		},
